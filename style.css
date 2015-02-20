@@ -1,0 +1,80 @@
+* {
+	border-radius:0 !important;
+}
+
+.add-players {
+	/* display:none; */
+}
+.game-area {
+	display:none;
+}
+
+body {
+	height:100%;
+	margin-bottom:20%;
+}
+
+.player-selector {
+	margin:20px;
+	font-size:2em;
+	cursor:pointer;	
+	padding:1em;
+	list-style-type: none;
+}
+
+.player-selector.inactive {
+	color:#aaa;
+}
+
+.player-selector.inactive:hover {
+	background:#A2DED0;
+	color:white;
+}
+
+.player-selector.active {
+	color:white;
+	background: #26A65B;
+}
+
+.add-players {
+	margin-bottom:1em;
+}
+
+.big-button {
+	position:fixed;
+	bottom:0;
+	font-size:3em;
+	display:block;
+	left:0;
+	width:100%;
+	padding:1em 0;
+}
+
+.status-effect {
+	background: #EB9532;
+	color:white;
+	padding:0.4em;
+	display:inline;
+	margin-right:1em;
+}
+
+.settings-wrapper, .info-wrapper {
+	position:fixed;
+	top:0;
+	left:0;
+	font-size:2em;
+	margin-top:0.5em;
+	margin-left:0.5em;
+	height:2em;
+	width:3em;
+}
+
+.settings-wrapper button, .info-wrapper button {	
+	height:100%;
+	width:100%;
+	text-align:center;
+}
+
+.info-wrapper {
+	top:3em;
+}

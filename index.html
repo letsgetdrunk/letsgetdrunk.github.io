@@ -2,9 +2,144 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>let's get drunk</title>
+	<title>lets get drunk</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	this is the text thing i did!
+	<div class="container">	
+		<div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1 class="modal-title" id="myModalLabel">SETTINGS</h1>
+					</div>
+					<div class="modal-body">
+					
+						<p class='text-muted'><em>Do you seriously need helper text for this?</em></p>
+						<button id='settings_sounds' class="btn btn-lg btn-success">SOUNDS ARE ON</button>
+						<hr>
+						<p class='text-muted'>
+							<em>
+								Sticky Status Effects stay with you for the whole game. When turned off, any new status effect
+								a player gets removes the old one.
+							</em>
+						</p>
+						<button id='settings_sticky_status_effects' class="btn btn-lg btn-success">STICKY STATUS EFFECTS ARE ON</button>						
+						
+					</div>
+					<div class="modal-footer">
+						<p class='text-muted'><em>All settings auto-save in real time!</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h1 class="modal-title" id="myModalLabel">INFORMATION</h1>
+					</div>
+					<div class="modal-body">
+					
+						<h3>Avenge Me!</h3>						
+						<p>Whenever somebody makes you drink</p>
+						
+					</div>
+					<div class="modal-footer">
+						<p class='text-muted'><em>All settings auto-save in real time!</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="add-players">
+			<div class="col-xs-12">
+				<ul>
+					<li class='player-selector player-selector-last-played inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='played-last'>-</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Alice</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Tom</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Drew</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Adri</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Cherie</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Dave</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Nick</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Eden</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Emma</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Sammie</span></li>
+					<li class='player-selector inactive'><i class="fa fa-times-circle fa-fw"></i> <span class='name'>Drew</span></li>					
+				</ul>
+			</div>
+			
+			<button id='start-game-button' class='btn btn-danger add-players__start-game-button big-button'>
+				BEGIN THE MAYHEM
+			</button>
+			
+			<div class="settings-wrapper">
+				<button style='font-size:1em' data-toggle="modal" data-target="#settings-modal" class='btn btn-lg btn-primary'><i class="fa fa-cogs"></i></button>
+			</div>
+			
+			<div class="info-wrapper">
+				<button style='font-size:1em' data-toggle="modal" data-target="#info-modal" class='btn btn-lg btn-info'><i class="fa fa-info"></i></button>
+			</div>
+			
+		</div>
+		
+		<div class="game-area">
+		
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 class="game-area__turn-counter">
+						Turn:
+						<span id='turn-counter' class="game-area__turn-counter__counter">1</span>
+						-
+						<span id="current-player-name">Nick</span>
+						<small><em><span class="status-effects-wrapper"></span></em></small>
+					</h1>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 id='current-instruction-name'>
+						/
+					</h1>
+					<hr>
+					<h1 id='current-instructions' class='game-area__current-instructions'>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia adipisci distinctio molestiae itaque, aliquid ipsum ex, iusto debitis similique officiis ut eos saepe tenetur in optio repellendus tempora, maiores accusantium?
+					</h1>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<hr>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<button id='next-turn' class="btn btn-primary game-area__next-turn-button big-button">NEXT TURN</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.8/buzz.min.js"></script>	
+	<script type="text/javascript" src='script.js'></script>
+	<script type="text/javascript" src='quests.js'></script>
 </body>
 </html>
