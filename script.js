@@ -205,50 +205,56 @@ var drinking = {
 
 // MAIN GAME LOOP
 $(function() {
-    
-    drinking.initialiseStuff();
-    
-    // selecting whos playing
-    $('.player-selector').on('click', function() { 
-    
-    	playSound.play('toggle');
-     	
-    	drinking.togglePlayerSelector($(this));    	
-    });
-    
-    // starting the game    
-    $('#start-game-button').on('click', function() {   
-    	playSound.play('start_game');	
-    	
-    	drinking.startGame();    	
-    });
-    
-    // hitting next turn
-    $('#next-turn').on('click', function() {
-    	
-    	drinking.nextTurn();
-    	
-    	playSound.play('next_turn');
-    });
-    
-    
-    
-    /**
-     * SETTINGS STUFF
-     */
-    
-    // TODO make this not horrific
+
+	drinking.initialiseStuff();
+
+	// selecting whos playing
+	$('.player-selector').on('click', function() { 
+
+		playSound.play('toggle');
+		
+		drinking.togglePlayerSelector($(this));    	
+	});
+
+	// starting the game    
+	$('#start-game-button').on('click', function() {   
+		playSound.play('start_game');	
+		
+		drinking.startGame();    	
+	});
+
+	// hitting next turn
+	$('#next-turn').on('click', function() {
+		drinking.nextTurn();
+		playSound.play('next_turn');
+	});
+	
+	// or pressing enter or space to go to next turn
+	$(document).keydown(function(e) {		
+		if (e.which == 32 || e.which == 13) {
+			e.preventDefault();
+						
+			drinking.nextTurn();
+			playSound.play('next_turn');			
+		}
+	});
+	
+	/**
+	 * SETTINGS STUFF
+	 */
+
+	// TODO make this not horrific
 	$('#settings_sounds').on('click', function() {
 		Settings.togglePlaySounds();
 	});	
 	$('#settings_sticky_status_effects').on('click', function() {
 		Settings.toggleStickyStatusEffects();
 	});
-    
+
 });
 
 var Settings = {
-	play_sounds : true,
+	play_sounds : false,
 	sticky_status_effects : true,
 	togglePlaySounds : function() {
 		if (Settings.play_sounds == true) {
