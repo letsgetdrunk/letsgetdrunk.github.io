@@ -24,7 +24,7 @@ $(function() {
 	drinking.buildAndAddQuest("Breaking the Seal", "Last player to go for a piss has to drink.", []);
 	drinking.buildAndAddQuest("Coming of Age", "Player whos birthday is coming up next must drink.", []);
 	drinking.buildAndAddQuest("Welcome Back", "Player who most recently went on holiday must drink.", []);
-	drinking.buildAndAddQuest("For Your Rights", "Last player to stand up must drink.", []);
+	drinking.buildAndAddQuest("For Your Rights", "Everyone stand up! Last player to stand up must drink.", []);
 	drinking.buildAndAddQuest('Who Ya Gonna Call?', "Last person to shout 'Ghostbusters!' must drink.", []);	
 	drinking.buildAndAddQuest('La Reh-Voh-Loo-See-Ohn!', "Last person to shout 'VIVA LA FRANCE!' in a French accent must drink.", []);
 	drinking.buildAndAddQuest('Dungeon Master', "Anyone who lives in a house with a basement must drink.", []);
@@ -52,12 +52,12 @@ $(function() {
 	drinking.buildAndAddQuest('Hen Party', "Drink once for each female sitting next to you.", []);
 	drinking.buildAndAddQuest('Backfire!', "Take a drink.", []);
 	drinking.buildAndAddQuest('Nooooo!', "Take a drink.", []);
-	drinking.buildAndAddQuest("I'm Here To Get Drunk, Anyway", "Take a drink.", []);
+	drinking.buildAndAddQuest("I'm Here To Get Drunk Anyway", "Take a drink.", []);
 	drinking.buildAndAddQuest('Why Me?!', "Take a drink.", []);
 	// drinking.buildAndAddQuest('Medusa\'s Glare', "Yell the word 'MEDUSA!' in the near future. Last person to cover their eyes must drink twice (one for each eye)", []);
-	drinking.buildAndAddQuest("Dishing It Out", "The 2 players to your left and right must drink", []);
-	drinking.buildAndAddQuest("Clusterfuck", "The 2 players to your left and right must drink", []);
-	drinking.buildAndAddQuest("", "The 2 players to your left and right must drink", []);	
+	drinking.buildAndAddQuest("Dishing It Out", "The 2 players to your left and right must drink.", []);
+	drinking.buildAndAddQuest("Clusterfuck", "The 2 players to your left and right must drink.", []);
+	drinking.buildAndAddQuest("Yes Sir", "Everyone salutes you. Last player to salute must drink.", []);	
 	
 	// STATUS ADDERS
 	drinking.buildAndAddQuest('Double Trouble', "Every drink that happens on one of your turns is doubled", ['Double Trouble']);
