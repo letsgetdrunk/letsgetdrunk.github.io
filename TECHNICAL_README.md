@@ -29,7 +29,14 @@ OK we're done, let's run the magic grunt server:
 
 In your browser go to localhost:9000
 
-BOOM!
+BOOM! you'll also notice if you make a change on the code (assuming you have auto-upload on in PHPStorm) then the localhost:9000 will update without you even having to reload the page. Magic.
+
+Adding routes, controllers etc:
+You should add these with yo, but that's on your vagrant. So once you've done it you have to copy the files off vagrant and then you can add them to the project.
+See [yo angular generator](https://github.com/yeoman/generator-angular) for general how-to.
+if you make a route, controller and view for "cats" like:
+`yo angular:route cats`
+Then download the '/var/letsGetDrunk/app` folder back to your local machine so you can add all the new/changed files to git and push it.
 
 ##Current TODOs
 
