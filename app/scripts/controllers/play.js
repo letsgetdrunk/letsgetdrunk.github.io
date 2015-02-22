@@ -15,7 +15,8 @@ angular.module('drinkingApp')
         }
 
         $scope.player = {
-            name: ""
+            name: "",
+            effects: []
         };
 
         $scope.addPlayer = function () {
@@ -52,7 +53,8 @@ angular.module('drinkingApp')
             //Clear out any extra in-game data we've got saved against the player, or the game.
             for(var i = 0; i < $rootScope.players.length; i++){
                 $rootScope.players[i] = {
-                    name: $rootScope.players[i].name
+                    name: $rootScope.players[i].name,
+                    effects: []
                 }
             }
 
