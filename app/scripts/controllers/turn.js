@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name drinkingApp.controller:RulesCtrl
+ * @name drinkingApp.controller:TurnCtrl
  * @description
- * # RulesCtrl
+ * # TurnCtrl
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-  .controller('RulesCtrl', function ($scope, $rootScope) {
-        $rootScope.menuActive = "rules";
+  .controller('TurnCtrl', function ($scope, $rootScope) {
+        $rootScope.menuActive = "turn";
         $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
