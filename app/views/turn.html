@@ -18,10 +18,10 @@
                     Game Effects
                 </div>
                 <div class="panel-body">
-                    <div class="label"
+                    <div class="label col-xs-12"
                          ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
                          ng-repeat="effect in game.effects">
-                        {{effect.title}}
+                        {{effect.title}}<span ng-if="effect.expires">(Expires Turn {{effect.expires}})</span>
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
                     Player Effects
                 </div>
                 <div class="panel-body">
-                    <div class="label"
+                    <div class="label col-xs-12"
                          ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
                          ng-repeat="effect in player.effects">
-                        {{effect.title}}
+                        {{effect.title}}<span ng-if="effect.expires"> (Expires Turn {{effect.expires}})</span>
                     </div>
                 </div>
             </div>
