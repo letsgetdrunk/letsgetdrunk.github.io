@@ -62,6 +62,7 @@ angular.module('drinkingApp')
             $rootScope.game = {
                 effects: []
             };
+            $rootScope.currentPlayerIndex = undefined;
 
             //Go to the game
             return $location.path('/turn');
