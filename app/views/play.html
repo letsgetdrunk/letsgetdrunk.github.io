@@ -1,1 +1,26 @@
-<p>This is the play view.</p>
+<div class="panel panel-default" id="addPlayer">
+    <div class="panel-heading">Add a Player
+    </div>
+    <div class="panel-body">
+        <label for="playerName">Name: </label>
+        <input type="text" id="playerName" name="playerName" ng-model="player.name" required>
+        <div class="btn btn-default" ng-click="addPlayer()">Add</div>
+    </div>
+</div>
+
+<div ng-if="players.length > 0" class="panel panel-default" id="listPlayers">
+    <div class="panel-heading">Players
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="addedPlayer in players">
+            <div class="col-xs-8">{{addedPlayer.name}}</div>
+            <div class="col-xs-4">
+                <div class="btn btn-default" ng-click="removePlayer(addedPlayer)">Remove</div>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="btn btn-primary col-xs-12" ng-if="players.length > 1" href="#/turn">
+    BRING THE MAYHEM
+</a>
+

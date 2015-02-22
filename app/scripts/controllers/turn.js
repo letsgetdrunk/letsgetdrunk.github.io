@@ -8,11 +8,7 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-  .controller('TurnCtrl', function ($scope, $rootScope) {
+    .controller('TurnCtrl', function ($scope, $rootScope) {
         $rootScope.menuActive = "turn";
-        $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+        $rootScope.gameInProgress = true;
+    });
