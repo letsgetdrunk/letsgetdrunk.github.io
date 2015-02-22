@@ -32,6 +32,12 @@ angular.module('drinkingApp')
                 $rootScope.currentPlayerIndex = 0;
             }
             $scope.player = $rootScope.players[$rootScope.currentPlayerIndex];
+            //Turn Counter
+            if ($rootScope.turnCounter == undefined) {
+                $rootScope.turnCounter = 1;
+            } else {
+                $rootScope.turnCounter = $rootScope.turnCounter + 1;
+            }
             getAQuest();
         };
 

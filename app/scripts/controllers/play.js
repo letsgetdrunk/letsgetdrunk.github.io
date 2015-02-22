@@ -50,6 +50,7 @@ angular.module('drinkingApp')
         };
 
         $scope.newGame = function(){
+            $rootScope.turnCounter = undefined;
             //Clear out any extra in-game data we've got saved against the player, or the game.
             for(var i = 0; i < $rootScope.players.length; i++){
                 $rootScope.players[i] = {
