@@ -1,1 +1,13 @@
-<p>This is the turn view.</p>
+<h2>{{player.name}}</h2>
+<div ng-if="player.effects.length > 0" class="panel panel-default">
+    <div class="panel-heading">
+        Effects
+    </div>
+    <div class="panel-body">
+        <div class="label" ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
+             ng-repeat="effect in player.effects">
+            {{effect.title}}
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 btn btn-primary" ng-click="nextPlayer()">Next Player</div>

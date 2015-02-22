@@ -16,22 +16,26 @@ angular.module('drinkingApp')
         $rootScope.menuActive = "turn";
         $rootScope.gameInProgress = true;
 
-        var nextPlayer = function () {
-            //Next
-            $rootScope.currentPlayerIndex = $rootScope.currentPlayerIndex + 1;
+        var getAQuest = function(){
+
+        };
+
+        $scope.nextPlayer = function () {
+            //Set player to first one, unless we're continuing a game, in which case, next.
+            if ($rootScope.currentPlayerIndex == undefined) {
+                $rootScope.currentPlayerIndex = 0;
+            } else {
+                $rootScope.currentPlayerIndex = $rootScope.currentPlayerIndex + 1;
+            }
             //Too high an index? Back to 0
             if ($rootScope.currentPlayerIndex >= $rootScope.players.length) {
                 $rootScope.currentPlayerIndex = 0;
             }
+            $scope.player = $rootScope.players[$rootScope.currentPlayerIndex];
+            getAQuest();
         };
 
-        //Set player to first one, unless we're continuing a game, in which case, next.
-        if ($rootScope.currentPlayerIndex == undefined) {
-            $rootScope.currentPlayerIndex = 0;
-        } else {
-            nextPlayer();
-        }
-
+        $scope.nextPlayer();
 
 
     });
