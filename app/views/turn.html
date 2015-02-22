@@ -1,12 +1,44 @@
-<h2>{{player.name}}</h2>
-<div ng-if="player.effects.length > 0" class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading">
-        Effects
+        <h1>Turn {{turnCounter}}</h1>
     </div>
     <div class="panel-body">
-        <div class="label" ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
-             ng-repeat="effect in player.effects">
-            {{effect.title}}
+        <div class="col-xs-6">
+            <h2>{{player.name}}</h2>
+            <hr>
+            <h2>{{quest.title}}</h2>
+
+            <p>{{quest.description}}</p>
+        </div>
+        <div class="col-xs-6">
+
+
+            <div ng-if="game.effects.length > 0" class="panel panel-default">
+                <div class="panel-heading">
+                    Game Effects
+                </div>
+                <div class="panel-body">
+                    <div class="label"
+                         ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
+                         ng-repeat="effect in game.effects">
+                        {{effect.title}}
+                    </div>
+                </div>
+            </div>
+
+
+            <div ng-if="player.effects.length > 0" class="panel panel-default">
+                <div class="panel-heading">
+                    Player Effects
+                </div>
+                <div class="panel-body">
+                    <div class="label"
+                         ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
+                         ng-repeat="effect in player.effects">
+                        {{effect.title}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
