@@ -52,4 +52,6 @@ Then download the `/var/letsGetDrunk/app` folder back to your local machine so y
 
 ##Current TODOs
 
-- More elegant way of setting up whos currently playing rather than just my mates.
+- Sound
+- Add actual quests
+- Style
