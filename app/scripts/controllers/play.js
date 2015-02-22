@@ -43,6 +43,10 @@ angular.module('drinkingApp')
             }
             $rootScope.gameInProgress = false;
         };
+        $scope.removeAllPlayers = function(){
+            $rootScope.players = [];
+            $rootScope.gameInProgress = false;
+        };
 
         $scope.newGame = function(){
             //Clear out any extra in-game data we've got saved against the player, or the game.
