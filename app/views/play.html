@@ -2,10 +2,11 @@
     <div class="panel-heading">Add a Player
     </div>
     <div class="panel-body">
-        <label for="playerName">Name: </label>
-        <input type="text" id="playerName" name="playerName" ng-model="player.name" required>
-
-        <div class="btn btn-default" ng-click="addPlayer()">Add</div>
+        <form ng-submit="addPlayer()" >
+            <label for="playerName">Name: </label>
+            <input type="text" id="playerName" name="playerName" ng-model="player.name" required>
+            <button class="btn btn-default" type='submit'>Add</button>
+        </form>
     </div>
 </div>
 
