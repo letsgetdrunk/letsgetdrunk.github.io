@@ -8,11 +8,12 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('PlayCtrl', function ($scope, $rootScope) {
+    .controller('PlayCtrl', function ($scope, $rootScope, $location) {
         $rootScope.menuActive = "play";
         if ($rootScope.players == undefined) {
             $rootScope.players = [];
         }
+
         $scope.player = {
             name: ""
         };
@@ -31,6 +32,7 @@ angular.module('drinkingApp')
                 return alert("That player is already in the list");
             }
             $rootScope.players.push(angular.copy($scope.player));
+            $scope.player.name = "";
             $rootScope.gameInProgress = false;
         };
 
@@ -42,4 +44,20 @@ angular.module('drinkingApp')
             $rootScope.gameInProgress = false;
         };
 
+        $scope.newGame = function(){
+            //Clear out any extra in-game data we've got saved against the player, or the game.
+            for(var i = 0; i < $rootScope.players.length; i++){
+                $rootScope.players[i] = {
+                    name: $rootScope.players[i].name
+                }
+            }
+
+            //Clear out anything we've saved against the game
+            $rootScope.game = {
+                effects: []
+            };
+
+            //Go to the game
+            return $location.path('/turn');
+        }
     });
