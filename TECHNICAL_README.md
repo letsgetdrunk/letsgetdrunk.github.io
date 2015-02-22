@@ -43,7 +43,8 @@ In your browser go to localhost:9000
 
 BOOM! you'll also notice if you make a change on the code (assuming you have auto-upload on in PHPStorm) then the localhost:9000 will update without you even having to reload the page. Magic.
 
-Adding routes, controllers etc:
+##Optional Guide
+###Adding Routes, Views and Controllers
 You should add these with yo, but that's on your vagrant. So once you've done it you have to copy the files off vagrant and then you can add them to the project.
 See [yo angular generator](https://github.com/yeoman/generator-angular) for general how-to.
 if you make a route, controller and view for "cats" like:
