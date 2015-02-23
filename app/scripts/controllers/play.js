@@ -10,16 +10,24 @@
 angular.module('drinkingApp')
     .controller('PlayCtrl', function ($scope, $rootScope, $location) {
         $rootScope.menuActive = "play";
+        
         if ($rootScope.players == undefined) {
             $rootScope.players = [];
         }
-
+                
         $scope.player = {
             name: "",
             effects: []
         };
 
+        $scope.init = function() {
+          
+          
+          //
+        };
+
         $scope.addPlayer = function () {
+            
             if ($scope.player.name.length == 0) {
                 return;
             }
@@ -64,7 +72,10 @@ angular.module('drinkingApp')
                 effects: []
             };
             $rootScope.currentPlayerIndex = undefined;
-
+            
+            // save the players we have here to HTML5 local storage for easy selection next time            
+            localStorageService.set('players', $rootScope.players);
+            
             //Go to the game
             return $location.path('/turn');
         }
