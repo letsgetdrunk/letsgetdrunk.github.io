@@ -8,22 +8,21 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('PlayCtrl', function ($scope, $rootScope, $location) {
+    .controller('PlayCtrl', function ($scope, $rootScope, $location, localStorageService) {
         $rootScope.menuActive = "play";
         
-        if ($rootScope.players == undefined) {
-            $rootScope.players = [];
+        if ($rootScope.players == undefined) {            
+            // see if we got any people in local storage first             
+            if (localStorageService.get('players') != null) {                
+                $rootScope.players = localStorageService.get('players');                   
+            } else {
+                $rootScope.players = [];   
+            }
         }
-                
+                        
         $scope.player = {
             name: "",
             effects: []
-        };
-
-        $scope.init = function() {
-          
-          
-          //
         };
 
         $scope.addPlayer = function () {
