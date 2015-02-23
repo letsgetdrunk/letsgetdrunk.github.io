@@ -168,5 +168,14 @@
     ],
     "gameEffects": [
     ]
+  },
+  {
+    "title": "quest using players",
+    "description": "I'm standard",
+    "playerEffects": [
+    ],
+    "gameEffects": [
+    ],
+    "playerCountEffected" : 2
   }
 ]

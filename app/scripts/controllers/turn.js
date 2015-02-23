@@ -14,11 +14,15 @@ angular.module('drinkingApp')
             $rootScope.gameInProgress = false;
             return $location.path('/');
         }
+        
         var quests = [];
+        var players_effected = [];
+        
         $rootScope.menuActive = "turn";
         $rootScope.gameInProgress = true;
 
         var getAQuest = function () {
+            $scope.players_effected = [];
             $scope.quest = quests[Math.floor(Math.random() * quests.length)];
             for (var i = 0; i < $scope.quest.playerEffects.length; i++) {
                 addEffectToPlayer($scope.player, $scope.quest.playerEffects[i]);
@@ -79,6 +83,8 @@ angular.module('drinkingApp')
         };
 
         $scope.nextPlayer = function (continuing) {
+            
+            // so all this stuff does is basically sort out what turn it is and everything, right?
             if (!continuing) {
                 if ($rootScope.currentPlayerIndex == undefined) {
                     $rootScope.currentPlayerIndex = 0;
