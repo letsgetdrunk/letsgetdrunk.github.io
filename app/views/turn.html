@@ -4,7 +4,23 @@
     </div>
     <div class="panel-body">
         <div class="col-xs-6">
-            <h2>{{player.name}}</h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="text-muted">Next Player</p>
+                    <h2>{{player.name}}</h2>        
+                </div>                
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class='text-muted'>Players effected</p>
+                    <div ng-repeat="player in players_effected">
+                        {{player.name}}
+                        <br>
+                    </div>
+                </div>
+            </div>
+            
             <hr>
             <h2>{{quest.title}}</h2>
 
