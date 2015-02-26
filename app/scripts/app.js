@@ -9,40 +9,41 @@
  * Main module of the application.
  */
 angular
-  .module('drinkingApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'LocalStorageModule'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/rules', {
-        templateUrl: 'views/rules.html',
-        controller: 'RulesCtrl'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'ContactCtrl'
-      })
-      .when('/play', {
-        templateUrl: 'views/play.html',
-        controller: 'PlayCtrl'
-      })
-      .when('/turn', {
-        templateUrl: 'views/turn.html',
-        controller: 'TurnCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    .module('drinkingApp', [
+        'ngAnimate',
+        'ngAria',
+        'ngCookies',
+        'ngMessages',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'LocalStorageModule',
+        'ngMaterial'
+    ])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .when('/rules', {
+                templateUrl: 'views/rules.html',
+                controller: 'RulesCtrl'
+            })
+            .when('/contact', {
+                templateUrl: 'views/contact.html',
+                controller: 'ContactCtrl'
+            })
+            .when('/play', {
+                templateUrl: 'views/play.html',
+                controller: 'PlayCtrl'
+            })
+            .when('/turn', {
+                templateUrl: 'views/turn.html',
+                controller: 'TurnCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
