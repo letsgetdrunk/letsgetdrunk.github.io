@@ -37,7 +37,7 @@ And some more:
  
 OK we're done, let's run the magic grunt server:
 
-`grunt serve`
+`grunt server`
 
 In your browser go to localhost:9000
 
