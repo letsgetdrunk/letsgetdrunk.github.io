@@ -81,3 +81,21 @@ body {
     border-bottom: 0;
   }
 }
+#menuButton {
+    padding: 0.2em;
+    width: 2.5em;
+    height: 2.5em;
+    margin-right: 0.8em;
+    font-size: 1.2em;
+
+}
+#menuButton i {
+    margin: 0px;
+    padding: 0px;
+}
+
+#playButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
