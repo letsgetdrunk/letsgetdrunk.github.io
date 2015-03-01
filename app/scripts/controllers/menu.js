@@ -8,10 +8,10 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('MenuCtrl', function ($scope, $mdSidenav, $log) {
+    .controller('MenuCtrl', function ($scope, $mdSidenav, $log, $location) {
 
-        $scope.toggleLeft = function() {
-            $mdSidenav('left').toggle()
+        $scope.open = function() {
+            $mdSidenav('left').open()
                 .then(function(){
                     $log.debug("toggle left is done");
                 });
@@ -22,6 +22,14 @@ angular.module('drinkingApp')
                 .then(function(){
                     $log.debug("close LEFT is done");
                 });
+        };
+
+        $scope.loadPage = function(page){
+            $mdSidenav('left').close()
+                .then(function(){
+                    $log.debug("close LEFT is done");
+                });
+            $location.path(page);
         };
 
     });

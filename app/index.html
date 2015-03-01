@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="drinkingApp">
+<body ng-app="drinkingApp" id="appTop">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -27,8 +27,8 @@
             <div layout="column" layout-fill layout-align="center center">
                 <md-toolbar class="md-theme-indigo">
                     <h1 class="md-toolbar-tools">
-                            <md-button aria-label class="menuButton"><img class="menuIcon" ng-src="images/material-sprites/ic_menu_white_24dp.png" alt="Menu"  ng-click="toggleLeft()"></md-button>
-                        Let's Get Drunk
+                            <md-button aria-label class="menuButton"><img class="menuIcon" ng-src="images/material-sprites/ic_menu_white_24dp.png" alt="Menu"  ng-click="open()"></md-button>
+                        <span id="appTitle">Let's Get Drunk</span>
                     </h1>
                 </md-toolbar>
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
@@ -39,8 +39,23 @@
                         </h1>
                     </md-toolbar>
                     <md-content class="md-padding" >
-                        <md-button ng-click="close()" class="md-primary">
-                            Close
+                        <md-button ng-if="gameInProgress"class="md-primary" ng-click="loadPage('/turn')">
+                            Continue Game
+                        </md-button>
+                    </md-content>
+                    <md-content class="md-padding">
+                        <md-button class="md-primary" ng-click="loadPage('/play')">
+                            New Game
+                        </md-button>
+                    </md-content>
+                    <md-content class="md-padding">
+                        <md-button class="md-primary" ng-click="loadPage('/rules')">
+                            Rules
+                        </md-button>
+                    </md-content>
+                    <md-content class="md-padding" >
+                        <md-button class="md-primary" ng-click="loadPage('/contact')">
+                            Contact
                         </md-button>
                     </md-content>
                 </md-sidenav>

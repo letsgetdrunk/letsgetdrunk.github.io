@@ -1,45 +1,63 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h1>Turn {{turnCounter}}</h1>
-    </div>
-    <div class="panel-body">
-        <div class="col-xs-6">
-            <h2>{{player.name}}</h2>
-            <hr>
-            <h2>{{quest.title}}</h2>
+<div layout="column">
 
-            <p>{{quest.description}}</p>
-        </div>
-        <div class="col-xs-6">
-
-
-            <div ng-if="game.effects.length > 0" class="panel panel-default">
-                <div class="panel-heading">
+    <md-content layout="column" layout-fill>
+        <md-card>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    {{player.name}} - Turn {{turnCounter}}
+                </div>
+            </md-toolbar>
+            <md-card-content>
+                <h2>{{quest.title}}</h2>
+                <hr>
+                <p>{{quest.description}}</p>
+            </md-card-content>
+        </md-card>
+        </md-content>
+    <md-content layout="column" layout-fill layout-gt-sm="row">
+        <md-card>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
                     Game Effects
                 </div>
-                <div class="panel-body">
-                    <div class="label col-xs-12"
-                         ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
-                         ng-repeat="effect in game.effects">
-                        {{effect.title}}<span ng-if="effect.expires">(Expires Turn {{effect.expires}})</span>
+            </md-toolbar>
+            <md-card-content>
+                <div ng-if="game.effects.length == 0">No Effects</div>
+                <md-toolbar
+                        ng-class="{'md-primary': effect.type == 'good','md-accent': effect.type == 'bad', 'md-warn': effect.type == 'evil'}"
+                        ng-repeat="effect in game.effects">
+                    <div class="md-toolbar-tools">
+      <span class="md-flex">
+          {{effect.title}}<span ng-if="effect.expires">(Expires Turn {{effect.expires}})</span>
+          </span>
                     </div>
-                </div>
-            </div>
-
-
-            <div ng-if="player.effects.length > 0" class="panel panel-default">
-                <div class="panel-heading">
+                </md-toolbar>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
                     Player Effects
                 </div>
-                <div class="panel-body">
-                    <div class="label col-xs-12"
-                         ng-class="{'label-success': effect.type == 'good','label-warning': effect.type == 'bad', 'label-danger': effect.type == 'evil'}"
-                         ng-repeat="effect in player.effects">
-                        {{effect.title}}<span ng-if="effect.expires"> (Expires Turn {{effect.expires}})</span>
+            </md-toolbar>
+            <md-card-content>
+                <div ng-if="player.effects.length == 0">No Effects</div>
+                <md-toolbar
+                        ng-class="{'md-primary': effect.type == 'good','md-accent': effect.type == 'bad', 'md-warn': effect.type == 'evil'}"
+                        ng-repeat="effect in player.effects">
+                    <div class="md-toolbar-tools">
+      <span class="md-flex">
+          {{effect.title}}<span ng-if="effect.expires">(Expires Turn {{effect.expires}})</span>
+          </span>
                     </div>
-                </div>
-            </div>
-        </div>
+                </md-toolbar>
+            </md-card-content>
+        </md-card>
+    </md-content>
+    <div layout="column" ng-click="nextPlayer()" class="md-padding md-raised md-button md-primary md-default-theme"><h2>
+        Next Player</h2>
+
+        <div class="md-ripple-container"></div>
     </div>
+
 </div>
-<div class="col-xs-12 btn btn-primary" ng-click="nextPlayer()">Next Player</div>

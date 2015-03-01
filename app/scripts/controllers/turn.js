@@ -8,7 +8,7 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('TurnCtrl', function ($scope, $rootScope, $location, $http) {
+    .controller('TurnCtrl', function ($scope, $rootScope, $location, $http, $anchorScroll) {
         //Check we're OK to play
         if ($rootScope.game == undefined || $rootScope.players == undefined || $rootScope.players.length < 2) {
             $rootScope.gameInProgress = false;
@@ -19,6 +19,8 @@ angular.module('drinkingApp')
         $rootScope.gameInProgress = true;
 
         var getAQuest = function () {
+            $location.hash('appTop');
+            $anchorScroll();
             $scope.quest = quests[Math.floor(Math.random() * quests.length)];
             for (var i = 0; i < $scope.quest.playerEffects.length; i++) {
                 addEffectToPlayer($scope.player, $scope.quest.playerEffects[i]);
