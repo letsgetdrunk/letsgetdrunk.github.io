@@ -81,17 +81,12 @@ body {
     border-bottom: 0;
   }
 }
-#menuButton {
+.menuIcon{
     padding: 0.2em;
     width: 2em;
     height: 2em;
     margin-right: 0.8em;
     font-size: 1.2em;
-
-}
-#menuButton i {
-    margin: 0px;
-    padding: 0px;
 }
 
 #playButton {

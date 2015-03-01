@@ -8,8 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
-    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,28 +21,29 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ng-controller="MainCtrl" layout="column">
+<div ng-controller="MenuCtrl" layout="column" layout-fill>
     <section layout="row" flex>
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-            <md-toolbar class="md-theme-indigo">
-                <h1 class="md-toolbar-tools">Menu</h1>
-            </md-toolbar>
-            <md-content class="md-padding" ng-controller="MenuCtrl">
-                <md-button ng-click="close()" class="md-primary">
-                    Close
-                </md-button>
-            </md-content>
-        </md-sidenav>
         <md-content flex>
             <div layout="column" layout-fill layout-align="center center">
-                <md-toolbar class="md-theme-indigo" ng-controller="MenuCtrl">
+                <md-toolbar class="md-theme-indigo">
                     <h1 class="md-toolbar-tools">
-                        <md-button class="md-raised" aria-label id="menuButton" ng-click="toggleLeft()">
-                            <img class="card-full-image" src="images/beer.png" alt="Such beer, so icon, logo, wow.">
-                        </md-button>
+                            <img class="menuIcon" ng-src="images/material-sprites/ic_menu_white_24dp.png" alt="Menu"  ng-click="toggleLeft()">
                         Let's Get Drunk
                     </h1>
                 </md-toolbar>
+                <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+                    <md-toolbar class="md-theme-indigo">
+                        <h1 class="md-toolbar-tools" >
+                            <img class="menuIcon" ng-src="images/material-sprites/ic_arrow_back_white_24dp.png" alt="Menu"  ng-click="close()">
+                            Menu
+                        </h1>
+                    </md-toolbar>
+                    <md-content class="md-padding" >
+                        <md-button ng-click="close()" class="md-primary">
+                            Close
+                        </md-button>
+                    </md-content>
+                </md-sidenav>
                 <div class="container">
                     <div ng-view=""></div>
                 </div>
@@ -68,9 +68,7 @@
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -79,8 +77,8 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
-<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
