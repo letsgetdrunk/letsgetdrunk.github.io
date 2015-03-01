@@ -27,14 +27,14 @@
             <div layout="column" layout-fill layout-align="center center">
                 <md-toolbar class="md-theme-indigo">
                     <h1 class="md-toolbar-tools">
-                            <img class="menuIcon" ng-src="images/material-sprites/ic_menu_white_24dp.png" alt="Menu"  ng-click="toggleLeft()">
+                            <md-button aria-label class="menuButton"><img class="menuIcon" ng-src="images/material-sprites/ic_menu_white_24dp.png" alt="Menu"  ng-click="toggleLeft()"></md-button>
                         Let's Get Drunk
                     </h1>
                 </md-toolbar>
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
                     <md-toolbar class="md-theme-indigo">
                         <h1 class="md-toolbar-tools" >
-                            <img class="menuIcon" ng-src="images/material-sprites/ic_arrow_back_white_24dp.png" alt="Menu"  ng-click="close()">
+                            <md-button aria-label class="menuButton"><img class="menuIcon" ng-src="images/material-sprites/ic_arrow_back_white_24dp.png" alt="Close Menu"  ng-click="close()"></md-button>
                             Menu
                         </h1>
                     </md-toolbar>
@@ -44,9 +44,7 @@
                         </md-button>
                     </md-content>
                 </md-sidenav>
-                <div class="container">
                     <div ng-view=""></div>
-                </div>
             </div>
         </md-content>
     </section>
