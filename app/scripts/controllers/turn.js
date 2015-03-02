@@ -41,7 +41,7 @@ angular.module('drinkingApp')
             return $rootScope.players[$rootScope.currentPlayerIndex];
         }
 
-        var getAQuest = function () {
+        var getAQuest = function (continuing) {
             $location.hash('appTop');
             $anchorScroll();
             
@@ -54,6 +54,8 @@ angular.module('drinkingApp')
              */
             if ($scope.quest.useNextPlayer != undefined && $scope.quest.useNextPlayer == true) {
                 $scope.player = getNextPlayer(continuing);
+                
+                console.log($scope.player);
                 
                 // if we have player effects, add those
                 if ($scope.quest.playerEffects != undefined) {

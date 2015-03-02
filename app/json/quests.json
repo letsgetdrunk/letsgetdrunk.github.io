@@ -30,7 +30,9 @@
       }
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "1 Game effect with timeout",
@@ -43,7 +45,9 @@
         "type": "bad",
         "turnLength": 2
       }
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Game and Player Effect",
@@ -63,7 +67,9 @@
         "title": "Eternal Game Effect",
         "type": "bad"
       }
-    ]
+    ],
+    "playerCountEffected" : 1,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 2",
@@ -71,7 +77,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 3",
@@ -79,7 +87,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 4,
+    "useNextPlayer" : false
   },
   {
     "title": "Standard Item 4",
@@ -87,7 +97,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 5",
@@ -95,7 +107,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 3,
+    "useNextPlayer" : false
   },
   {
     "title": "Standard Item 6",
@@ -103,7 +117,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 7",
@@ -111,7 +127,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 8",
@@ -119,7 +137,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : false
   },
   {
     "title": "Standard Item 9",
@@ -127,7 +147,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 4,
+    "useNextPlayer" : false
   },
   {
     "title": "Standard Item 10",
@@ -135,7 +157,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : false
   },
   {
     "title": "Standard Item 11",
@@ -143,7 +167,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 1,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 11",
@@ -151,7 +177,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 12",
@@ -159,7 +187,9 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   },
   {
     "title": "Standard Item 13",
@@ -167,6 +197,18 @@
     "playerEffects": [
     ],
     "gameEffects": [
-    ]
+    ],
+    "playerCountEffected" : 5,
+    "useNextPlayer" : true
+  },
+  {
+    "title": "quest using players",
+    "description": "I'm standard",
+    "playerEffects": [
+    ],
+    "gameEffects": [
+    ],
+    "playerCountEffected" : 2,
+    "useNextPlayer" : true
   }
 ]
