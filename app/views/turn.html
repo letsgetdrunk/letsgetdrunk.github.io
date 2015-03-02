@@ -4,7 +4,7 @@
         <md-card>
             <md-toolbar class="md-primary">
                 <div class="md-toolbar-tools">
-                    {{player.name}} - Turn {{turnCounter}}
+                    <span ng-if='player'>{{player.name}}</span> - Turn {{turnCounter}}
                 </div>
             </md-toolbar>
             <md-card-content>
