@@ -11,7 +11,7 @@ angular.module('drinkingApp')
     .controller('TurnCtrl', function ($scope, $location, $http, $anchorScroll, Game, Players) {
         //Check we're OK to play
         if (!Game.isGameValid()) {
-            Game.clearGame();
+            Game.resetGame();
             //@TODO tell user
             return $location.path('/');
         }
@@ -129,13 +129,5 @@ angular.module('drinkingApp')
             clearAnyOutOfDateEffects();
             getAQuest(continuing);
         };
-
-
-        $http.get('json/quests.json')
-            .then(function (res) {
-                quests = res.data;
-                $scope.nextPlayer($rootScope.currentPlayerIndex != undefined);
-
-            });
 
     });

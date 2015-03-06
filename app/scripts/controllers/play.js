@@ -27,16 +27,16 @@ angular.module('drinkingApp')
             }
             Players.addPlayer($scope.player);
             $scope.player.name = "";
-            Game.clearGame();
+            Game.resetGame();
         };
 
         $scope.removePlayer = function(player){
             Players.removePlayer(player);
-            Game.clearGame();
+            Game.resetGame();
         };
         $scope.removeAllPlayers = function(){
             Players.removeAllPlayers();
-            Game.clearGame();
+            Game.resetGame();
         };
 
         $scope.newGame = function(){

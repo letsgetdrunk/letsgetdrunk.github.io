@@ -1,5 +1,5 @@
 angular.module('drinkingApp')
-    .service('Game', function (Players) {
+    .service('Game', function (Players, Quests) {
         var self = this;
         var initialProperties = {
             gameInProgress: false,
@@ -10,13 +10,18 @@ angular.module('drinkingApp')
 
         var properties = angular.copy(initialProperties);
 
+        var resetGame = function(){
+            Quests.reset();
+            clearGame();
+        };
+
         var clearGame = function(){
             properties = angular.copy(initialProperties);
             Players.cleanPlayers();
         };
 
         var newGame = function(){
-            self.clearGame();
+            clearGame();
             Players.persistPlayers();
             properties.gameInProgress = true;
         };
@@ -35,6 +40,7 @@ angular.module('drinkingApp')
 
         return {
             clearGame: self.clearGame,
+            resetGame: self.resetGame,
             newGame: self.newGame,
             isGameValid: self.isGameValid,
             incrementRoundCounter: self.incrementRoundCounter,
