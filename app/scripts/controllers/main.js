@@ -8,7 +8,6 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('MainCtrl', function ($scope, $rootScope) {
-        $rootScope.menuActive = "main";
+    .controller('MainCtrl', function ($scope) {
 
     });

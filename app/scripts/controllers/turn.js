@@ -8,38 +8,16 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('TurnCtrl', function ($scope, $rootScope, $location, $http, $anchorScroll) {
+    .controller('TurnCtrl', function ($scope, $location, $http, $anchorScroll, Game, Players) {
         //Check we're OK to play
-        if ($rootScope.game == undefined || $rootScope.players == undefined || $rootScope.players.length < 2) {
-            $rootScope.gameInProgress = false;
+        if (!Game.isGameValid()) {
+            Game.clearGame();
+            //@TODO tell user
             return $location.path('/');
         }
         var quests = [];
-        
-        $scope.players_effected = [];
-        $rootScope.menuActive = "turn";
-        $rootScope.gameInProgress = true;
 
-        var getNextPlayer = function(continuing) {
-            if (!continuing) {
-                if ($rootScope.currentPlayerIndex == undefined) {
-                    $rootScope.currentPlayerIndex = 0;
-                } else {
-                    $rootScope.currentPlayerIndex = $rootScope.currentPlayerIndex + 1;
-                }
-                //Too high an index? Back to 0
-                if ($rootScope.currentPlayerIndex >= $rootScope.players.length) {
-                    $rootScope.currentPlayerIndex = 0;
-                }
-                //Turn Counter
-                if ($rootScope.turnCounter == undefined) {
-                    $rootScope.turnCounter = 1;
-                } else {
-                    $rootScope.turnCounter = $rootScope.turnCounter + 1;
-                }
-            }
-            return $rootScope.players[$rootScope.currentPlayerIndex];
-        }
+
 
         var getAQuest = function (continuing) {
             $location.hash('appTop');
@@ -148,32 +126,7 @@ angular.module('drinkingApp')
         };
 
         $scope.nextPlayer = function (continuing) {
-            // if (!continuing) {
-            //     if ($rootScope.currentPlayerIndex == undefined) {
-            //         $rootScope.currentPlayerIndex = 0;
-            //     } else {
-            //         $rootScope.currentPlayerIndex = $rootScope.currentPlayerIndex + 1;
-            //     }
-            //     //Too high an index? Back to 0
-            //     if ($rootScope.currentPlayerIndex >= $rootScope.players.length) {
-            //         $rootScope.currentPlayerIndex = 0;
-            //     }
-            //     //Turn Counter
-            //     if ($rootScope.turnCounter == undefined) {
-            //         $rootScope.turnCounter = 1;
-            //     } else {
-            //         $rootScope.turnCounter = $rootScope.turnCounter + 1;
-            //     }
-            // }
-            // $scope.player = $rootScope.players[$rootScope.currentPlayerIndex];
             clearAnyOutOfDateEffects();
-            
-            /*
-            gets a random quest
-            if quest affects the next player, gets the next player (and applies any player effects from the quest)
-            if quest adds game effects, adds those to the game effects
-            if the quest has a player effected count, grabs the correct amount of random players and adds them to the scope
-             */
             getAQuest(continuing);
         };
 
