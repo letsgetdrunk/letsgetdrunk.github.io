@@ -17,7 +17,7 @@ angular.module('drinkingApp')
         var self = this;
         var initialProperties = {
             players: [],
-            currentPlayerIndex: -1
+            currentPlayerIndex: 0
         };
         var properties = angular.copy(initialProperties);
 
@@ -82,6 +82,35 @@ angular.module('drinkingApp')
             return properties.players[properties.currentPlayerIndex];
         };
 
+        var clearOutOfDateEffects = function(roundNumber){
+            angular.forEach(properties.players, function (player) {
+                for (var i = 0; i < player.effects.length; i++) {
+                    if (player.effects[i].expires !== undefined && player.effects[i].expires <= roundNumber) {
+                        player.effects.splice(i, 1);
+                    }
+                }
+            });
+        };
+
+        var addEffectToPlayer = function (player, effect) {
+            var newEffect = {
+                title: effect.title,
+                type: effect.type
+            };
+            for (var i = 0; i < player.effects.length; i++) {
+                //Do we need to remove an identical one first?
+                if (player.effects[i].title == effect.title) {
+                    player.effects.splice(i, 1);
+                }
+            }
+            //Does it have a lifespan?
+            if (effect.turnLength !== undefined) {
+                var Game = $injector.get('Game');
+                newEffect.expires = Game.getRoundNumber() + effect.turnLength;
+            }
+            player.effects.push(newEffect);
+        };
+
         //INIT
         if (localStorageService.get('players') != null) {
             properties.players = localStorageService.get('players');
@@ -89,16 +118,6 @@ angular.module('drinkingApp')
         }
 
 
-        return {
-            doesPlayerExist: self.doesPlayerExist,
-            addPlayer: self.addPlayer,
-            removePlayer: self.removePlayer,
-            removeAllPlayers: self.removeAllPlayers,
-            cleanPlayers: self.cleanPlayers,
-            persistPlayers: self.persistPlayers,
-            enoughPlayers: self.enoughPlayers,
-            getNextPlayer: self.getNextPlayer,
-            getCurrentPlayer: self.getCurrentPlayer
-        };
+        return this;
 
     });

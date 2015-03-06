@@ -1,30 +1,29 @@
 angular.module('drinkingApp')
-    .service('Quests', function (Players) {
+    .service('Quests', function (Players, Game, Decks) {
         var self = this;
         var initialProperties = {
-            quests: [],
-            decks: []
+            currentQuestIndex: undefined
         };
 
         var properties = angular.copy(initialProperties);
 
-        var reset = function(){
+        var reset = function() {
             properties = angular.copy(initialProperties);
         };
 
-        var loadDecks = function(){
-
-            angular.forEach(properties.decks, function (deck) {
-                $http.get('json/' + deck + '.json')
-                    .then(function (deckQuests) {
-                        properties.quests = properties.quests.concat(deckQuests.data);
-                    });
-            });
-
+        var getNextQuest = function (scope) {
+            try{
+                return Decks.getQuest(scope);
+            }
+            catch(e){
+                //Oops
+                console.log("Quest threw exception");
+                console.log(e);
+                properties.quests.splice(questIndex, 1);
+                return getNextQuest(scope);
+            }
         };
 
-        return {
-            reset: self.reset
-        };
+        return this;
 
     });
