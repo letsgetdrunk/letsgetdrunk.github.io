@@ -1,7 +1,10 @@
 angular.module('drinkingApp')
-    .service('Decks', function (Players, $injector) {
+    .service('Decks', function (Game, Players, $injector) {
         var self = this;
         var scope;
+        var deckNames = [
+            'base'
+        ];
         var activeDecks = [];
         var decks;
         var currentDeck;
@@ -28,7 +31,7 @@ angular.module('drinkingApp')
                 if (highestIndex >= questIndex) {
                     var deckIndex = (questIndex - lowestIndex);
                     return {
-                        deck: activeDecks[x].deck,
+                        deck: activeDecks[x].properties,
                         runFunction: activeDecks[x].quests[deckIndex]
                     };
                 }
@@ -41,8 +44,12 @@ angular.module('drinkingApp')
             activeDecks = activeDecks.concat(decks[deckName]);
         };
 
+
+
+        //Decklarations.... get it?
+
         decks.base = {
-            deck: {
+            properties: {
                 title: "Base"
             },
             quests: [
