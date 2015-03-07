@@ -8,7 +8,7 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('TurnCtrl', function ($scope, $location, $http, $anchorScroll, Game, Players) {
+    .controller('TurnCtrl', function ($scope, $location, $http, $anchorScroll, Game, Players, Quests) {
         //Check we're OK to play
         if (!Game.isGameValid()) {
             Game.resetGame();

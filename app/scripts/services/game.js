@@ -8,68 +8,68 @@ angular.module('drinkingApp')
             effects: []
         };
 
-        var properties = angular.copy(initialProperties);
+        this.properties = angular.copy(initialProperties);
 
-        var resetGame = function () {
-            clearGame();
+        this.resetGame = function () {
+            self.clearGame();
             var Quests = $injector.get('Quests');
             Quests.reset();
         };
 
-        var clearGame = function () {
-            properties = angular.copy(initialProperties);
+        this.clearGame = function () {
+            self.properties = angular.copy(initialProperties);
             Players.cleanPlayers();
         };
 
-        var newGame = function () {
-            clearGame();
+        this.newGame = function () {
+            self.clearGame();
             Players.persistPlayers();
-            properties.gameInProgress = true;
+            self.properties.gameInProgress = true;
         };
 
-        var isGameValid = function () {
+        this.isGameValid = function () {
             var Quests = $injector.get('Quests');
-            return properties.gameInProgress && Players.enoughPlayers() && Quests.enoughQuests();
+            return self.properties.gameInProgress && Players.enoughPlayers() && Quests.enoughQuests();
         };
 
-        var incrementRoundCounter = function () {
-            properties.roundCounter++;
-            clearOutOfDateEffects();
+        this.incrementRoundCounter = function () {
+            self.properties.roundCounter++;
+            self.clearOutOfDateEffects();
         };
 
-        var incrementTurnCounter = function () {
-            properties.turnCounter++;
+        this.incrementTurnCounter = function () {
+            self.properties.turnCounter++;
         };
 
-        var getRoundNumber = function () {
-            return properties.roundCounter;
+        this.getRoundNumber = function () {
+            return self.properties.roundCounter;
         };
 
-        var clearOutOfDateEffects = function () {
-            for (var i = 0; i < properties.effects.length; i++) {
-                if (properties.effects[i].expires !== undefined && properties.effects[i].expires <= properties.roundCounter) {
-                    properties.effects.splice(i, 1);
+        this.clearOutOfDateEffects = function () {
+            for (var i = 0; i < self.properties.effects.length; i++) {
+                if (self.properties.effects[i].expires !== undefined && self.properties.effects[i].expires <= self.properties.roundCounter) {
+                    self.properties.effects.splice(i, 1);
                 }
             }
-            Players.clearOutOfDateEffects(properties.roundCounter);
+            Players.clearOutOfDateEffects(self.properties.roundCounter);
         };
 
-        var addEffectToGame = function (effect) {
+        this.addEffectToGame = function (effect) {
             var newEffect = {
                 title: effect.title,
                 type: effect.type
             };
-            for (var i = 0; i < properties.effects.length; i++) {
+            for (var i = 0; i < self.properties.effects.length; i++) {
                 //Do we need to remove an identical one first?
-                if (properties.effects[i].title == effect.title) {
-                    properties.effects.splice(i, 1);
+                if (self.properties.effects[i].title == effect.title) {
+                    self.properties.effects.splice(i, 1);
                 }
             }
             //Does it have a lifespan?
             if (effect.turnLength !== undefined) {
-                newEffect.expires = Game.getRoundNumber() + effect.turnLength;
+                newEffect.expires = self.getRoundNumber() + effect.turnLength;
             }
-            properties.effects.push(newEffect);
+            self.properties.effects.push(newEffect);
         };
 
         return this;

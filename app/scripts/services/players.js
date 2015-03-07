@@ -19,71 +19,72 @@ angular.module('drinkingApp')
             players: [],
             currentPlayerIndex: 0
         };
-        var properties = angular.copy(initialProperties);
+        this.properties = angular.copy(initialProperties);
 
-        var doesPlayerExist = function (playerName) {
-            angular.forEach(properties.players, function (aPlayer) {
-                if (playerName.toLowerCase() == aPlayer.name.toLowerCase()) {
-                    return true;
+        this.doesPlayerExist = function (playerName) {
+            var isTrue = false;
+            angular.forEach(self.properties.players, function (aPlayer) {
+                if (!isTrue && playerName.toLowerCase() == aPlayer.name.toLowerCase()) {
+                    isTrue = true;
                 }
             });
-            return false;
+            return isTrue;
         };
 
-        var addPlayer = function (player) {
+        this.addPlayer = function (player) {
             var newPlayer = angular.copy(player);
             newPlayer.colour = avatarColours[Math.floor(Math.random() * avatarColours.length)];
             newPlayer.name = newPlayer.name.toProperCase();
-            properties.players.push(newPlayer);
+            self.properties.players.push(newPlayer);
         };
 
-        var removePlayer = function (player) {
-            var index = properties.players.indexOf(player);
+        this.removePlayer = function (player) {
+            var index = self.properties.players.indexOf(player);
             if (index > -1) {
-                properties.players.splice(index, 1);
+                self.properties.players.splice(index, 1);
             }
         };
-        var removeAllPlayers = function () {
-            properties.players = [];
+        this.removeAllPlayers = function () {
+            self.properties = angular.copy(initialProperties);
         };
 
-        var cleanPlayers = function () {
-            for (var i = 0; i < properties.players.length; i++) {
-                properties.players[i] = {
-                    name: properties.players[i].name.toProperCase(),
-                    colour: properties.players[i].colour,
+        this.cleanPlayers = function () {
+            for (var i = 0; i < self.properties.players.length; i++) {
+                self.properties.players[i] = {
+                    name: self.properties.players[i].name.toProperCase(),
+                    colour: self.properties.players[i].colour,
                     effects: []
                 }
             }
         };
 
-        var persistPlayers = function () {
-            localStorageService.set('players', properties.players);
+        this.persistPlayers = function () {
+            localStorageService.set('players', self.properties.players);
         };
 
-        var enoughPlayers = function () {
-            return properties.players.length > 1;
+        this.enoughPlayers = function () {
+            return self.properties.players.length > 1;
         };
 
-        var getNextPlayer = function () {
+        this.getNextPlayer = function () {
             var Game = $injector.get('Game');
-            properties.currentPlayerIndex++;
+            self.properties.currentPlayerIndex++;
             //Too high an index? Back to 0
-            if (properties.currentPlayerIndex >= properties.players.length) {
-                properties.currentPlayerIndex = 0;
+            if (self.properties.currentPlayerIndex >= self.properties.players.length) {
+                self.properties.currentPlayerIndex = 0;
                 Game.incrementRoundCounter();
             }
             Game.incrementTurnCounter();
 
-            return getCurrentPlayer();
+            return self.getCurrentPlayer();
         };
 
-        var getCurrentPlayer = function(){
-            return properties.players[properties.currentPlayerIndex];
+        this.getCurrentPlayer = function(){
+            return self.properties.players[self.properties.currentPlayerIndex];
         };
 
-        var clearOutOfDateEffects = function(roundNumber){
-            angular.forEach(properties.players, function (player) {
+        this.clearOutOfDateEffects = function(roundNumber){
+            angular.forEach(self.properties.players, function (player) {
                 for (var i = 0; i < player.effects.length; i++) {
                     if (player.effects[i].expires !== undefined && player.effects[i].expires <= roundNumber) {
                         player.effects.splice(i, 1);
@@ -92,7 +93,7 @@ angular.module('drinkingApp')
             });
         };
 
-        var addEffectToPlayer = function (player, effect) {
+        this.addEffectToPlayer = function (player, effect) {
             var newEffect = {
                 title: effect.title,
                 type: effect.type
@@ -111,16 +112,15 @@ angular.module('drinkingApp')
             player.effects.push(newEffect);
         };
 
-        var getPlayers = function(){
-          return properties.players;
+        this.getPlayers = function(){
+          return self.properties.players;
         };
 
         //INIT
         if (localStorageService.get('players') != null) {
-            properties.players = localStorageService.get('players');
-            cleanPlayers();
+            self.properties.players = localStorageService.get('players');
+            self.cleanPlayers();
         }
-
 
         return this;
 

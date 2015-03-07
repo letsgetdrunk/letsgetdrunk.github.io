@@ -1,11 +1,11 @@
 angular.module('drinkingApp')
-    .service('Quests', function (Players, Game, Decks) {
+    .service('Quests', function (Players, Game) {
         var self = this;
         var scope;
         var deckNames = [
             'base'
         ];
-        var decks;
+        var decks = {};
         var helpers = {};
         var initialProperties = {
             currentQuest: undefined,
@@ -14,51 +14,51 @@ angular.module('drinkingApp')
         };
 
 
-        var properties = angular.copy(initialProperties);
+        this.properties = angular.copy(initialProperties);
 
-        var reset = function() {
-            properties = angular.copy(initialProperties);
+        this.reset = function() {
+            self.properties = angular.copy(initialProperties);
         };
 
-        var getNextQuest = function (scope) {
+        this.getNextQuest = function (scope) {
             try{
-                return getQuest(scope);
+                return self.getQuest(scope);
             }
             catch(e){
                 //Oops
                 console.log("Quest threw exception");
                 console.log(e);
-                properties.quests.splice(questIndex, 1);
-                return getNextQuest(scope);
+                self.properties.quests.splice(questIndex, 1);
+                return self.getNextQuest(scope);
             }
         };
 
-        var self = this;
-
-        var getQuest = function (theScope) {
+        this.getQuest = function (theScope) {
             scope = theScope;
-            properties.currentQuest = getRandomQuestObject;
-            properties.currentDeck = questObject.deck;
+            var questObject = getRandomQuestObject();
+            self.properties.currentQuest = questObject;
+            self.properties.currentDeck = questObject.deck;
             scope.game = Game.properties;
-            scope.deck = properties.currentDeck;
+            scope.deck = self.properties.currentDeck;
             return questObject.runFunction();
         };
 
         var getRandomQuestObject = function () {
             var totalQuests = 0;
-            for (var i = 0; i < properties.activeDecks.length; i++) {
-                totalQuests += properties.activeDecks[i].quests.length;
+            for (var i = 0; i < self.properties.activeDecks.length; i++) {
+                totalQuests += self.properties.activeDecks[i].quests.length;
             }
             var questIndex = Math.floor(Math.random() * totalQuests);
             var lowestIndex = 0;
             var highestIndex = -1;
-            for (var x = 0; x < properties.activeDecks.length; x++) {
-                highestIndex += (properties.activeDecks[x].length);
+            for (var x = 0; x < self.properties.activeDecks.length; x++) {
+                var deckLength = self.properties.activeDecks[x].quests.length;
+                highestIndex += (deckLength);
                 if (highestIndex >= questIndex) {
                     var deckIndex = (questIndex - lowestIndex);
                     return {
-                        deck: properties.activeDecks[x].properties,
-                        runFunction: properties.activeDecks[x].quests[deckIndex]
+                        deck: self.properties.activeDecks[x].properties,
+                        runFunction: self.properties.activeDecks[x].quests[deckIndex]
                     };
                 }
                 lowestIndex = highestIndex;
@@ -66,12 +66,12 @@ angular.module('drinkingApp')
             console.log("Random Quest selection failed!?");
         };
 
-        var addDeck = function (deckName) {
-            properties.activeDecks = properties.activeDecks.concat(decks[deckName]);
+        this.addDeck = function (deckName) {
+            self.properties.activeDecks = self.properties.activeDecks.concat(decks[deckName]);
         };
 
-        var enoughQuests = function(){
-            return properties.activeDecks.length > 0;
+        this.enoughQuests = function(){
+            return self.properties.activeDecks.length > 0;
         };
 
         /**
@@ -95,8 +95,10 @@ angular.module('drinkingApp')
             quests: [
                 function () {
                     //Test Quest
-                    alert(self.scope);
-                    return self.scope;
+                    scope.quest = {
+                        title: "Testing 123"
+                    };
+                    return scope;
                 }
             ]
         };

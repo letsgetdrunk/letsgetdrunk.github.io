@@ -17,6 +17,7 @@ angular.module('drinkingApp')
 
         $scope.players = Players.getPlayers();
 
+
         $scope.addPlayer = function () {
 
             if ($scope.player.name.length == 0) {
