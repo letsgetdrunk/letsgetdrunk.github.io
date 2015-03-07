@@ -17,17 +17,6 @@ angular.module('drinkingApp')
         }
 
 
-        $scope.nextPlayer = function (continuing) {
-            Players.getNextPlayer();
-            $scope.nextQuest();
-        };
-
-
-        $scope.nextQuest = function(){
-            $location.hash('appTop');
-            $anchorScroll();
-            $scope = Quests.getNextQuest($scope);
-        };
 
         //INIT
         $scope = Quests.getNextQuest($scope);
