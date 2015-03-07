@@ -54,9 +54,12 @@
             </md-card-content>
         </md-card>
     </md-content>
-    <div layout="column" ng-click="nextPlayer()" class="md-padding md-raised md-button md-primary md-default-theme"><h2>
-        Next Player</h2>
-
+    <div ng-if="quest.successButtonEnabled" layout="column" ng-click="quest.successFunction()" class="md-padding md-raised md-button md-primary md-default-theme"><h2>
+        {{quest.successButtonTitle}}</h2>
+        <div class="md-ripple-container"></div>
+    </div>
+    <div ng-if="quest.failureButtonEnabled" layout="column" ng-click="quest.failureFunction()" class="md-padding md-raised md-button md-primary md-default-theme"><h2>
+        {{quest.failureButtonTitle}}</h2>
         <div class="md-ripple-container"></div>
     </div>
 

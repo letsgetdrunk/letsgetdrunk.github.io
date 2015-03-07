@@ -1,5 +1,5 @@
 angular.module('drinkingApp')
-    .service('Game', function (Players, $injector) {
+    .service('Game', function (Players, $injector, $location, $anchorScroll) {
         var self = this;
         var initialProperties = {
             gameInProgress: false,
@@ -52,6 +52,18 @@ angular.module('drinkingApp')
                 }
             }
             Players.clearOutOfDateEffects(self.properties.roundCounter);
+        };
+
+        this.turn = function(scope, nextPlayer){
+            if(nextPlayer){
+                Players.getNextPlayer();
+            }
+            $location.hash('appTop');
+            $anchorScroll();
+            var Quests = $injector.get('Quests');
+            scope = Quests.getNextQuest(scope);
+            return scope;
+
         };
 
         this.addEffectToGame = function (effect) {
