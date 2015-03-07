@@ -8,12 +8,14 @@
  * Controller of the drinkingApp
  */
 angular.module('drinkingApp')
-    .controller('PlayCtrl', function ($scope, Players, $location, Game) {
+    .controller('PlayCtrl', function ($scope, Players, $location, Game, Quests) {
 
         $scope.player = {
             name: "",
             effects: []
         };
+
+        $scope.players = Players.getPlayers();
 
         $scope.addPlayer = function () {
 
@@ -40,6 +42,7 @@ angular.module('drinkingApp')
         };
 
         $scope.newGame = function(){
+            Quests.addDeck("base");
             Game.newGame();
             return $location.path('/turn');
         }

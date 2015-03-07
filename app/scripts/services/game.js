@@ -28,7 +28,8 @@ angular.module('drinkingApp')
         };
 
         var isGameValid = function () {
-            return properties.gameInProgress && Players.enoughPlayers();
+            var Quests = $injector.get('Quests');
+            return properties.gameInProgress && Players.enoughPlayers() && Quests.enoughQuests();
         };
 
         var incrementRoundCounter = function () {

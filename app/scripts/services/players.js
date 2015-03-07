@@ -111,6 +111,10 @@ angular.module('drinkingApp')
             player.effects.push(newEffect);
         };
 
+        var getPlayers = function(){
+          return properties.players;
+        };
+
         //INIT
         if (localStorageService.get('players') != null) {
             properties.players = localStorageService.get('players');
