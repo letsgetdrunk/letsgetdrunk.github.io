@@ -22,7 +22,8 @@ var app = angular
         'ngSanitize',
         'ngTouch',
         'LocalStorageModule',
-        'ngMaterial'
+        'ngMaterial',
+        'ngMdIcons'
     ])
     .config(function ($routeProvider) {
         $routeProvider
