@@ -96,23 +96,6 @@ angular.module('drinkingApp')
             scope.quest.failureButtonTitle = "I SUCK!";
         };
 
-        helpers.getRandomOpponents = function (numberOfOpponents){
-            var currentPlayer = Players.getCurrentPlayer();
-            var opponents = [];
-            var playerIndexArray = [];
-            for (var i =0; i < Players.properties.players.length; i++){
-                playerIndexArray.push(i);
-            }
-            playerIndexArray.splice(Players.properties.currentPlayerIndex, 1);
-            while(numberOfOpponents > 0 && playerIndexArray.length > 0){
-                var opponentIndex = Math.floor(Math.random() * playerIndexArray.length);
-                opponents.push(Players.properties.players[playerIndexArray[opponentIndex]]);
-                playerIndexArray.splice(opponentIndex, 1);
-            }
-            return opponents;
-
-        };
-
 
         //Decklarations.... get it?
 
@@ -136,7 +119,7 @@ angular.module('drinkingApp')
                     var currentPlayer = Players.getCurrentPlayer();
                     var percentageOfOtherPlayersToBattle = 40;
                     var numberOfOpponents = Math.ceil((Players.properties.players.length -1) * (percentageOfOtherPlayersToBattle / 100));
-                    var opponents = helpers.getRandomOpponents(numberOfOpponents);
+                    var opponents = Players.getRandomOpponents(numberOfOpponents);
                     var opponentNames = [];
                     for (var i = 0; i < opponents.length; i++){
                         opponentNames.push(opponents[i].name);

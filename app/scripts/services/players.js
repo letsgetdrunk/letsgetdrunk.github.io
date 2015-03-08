@@ -93,6 +93,23 @@ angular.module('drinkingApp')
             });
         };
 
+        this.getRandomOpponents = function (numberOfOpponents){
+            var currentPlayer = self.getCurrentPlayer();
+            var opponents = [];
+            var playerIndexArray = [];
+            for (var i =0; i < self.properties.players.length; i++){
+                playerIndexArray.push(i);
+            }
+            playerIndexArray.splice(self.properties.currentPlayerIndex, 1);
+            while(numberOfOpponents > 0 && playerIndexArray.length > 0){
+                var opponentIndex = Math.floor(Math.random() * playerIndexArray.length);
+                opponents.push(self.properties.players[playerIndexArray[opponentIndex]]);
+                playerIndexArray.splice(opponentIndex, 1);
+            }
+            return opponents;
+
+        };
+
         this.addEffectToPlayer = function (player, effect) {
             var newEffect = {
                 title: effect.title,
